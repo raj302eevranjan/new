@@ -1,0 +1,88 @@
+
+<!-- header Page starts -->
+<div ng-include="'angular/views/core/header.html'"></div>
+<!-- header Page ends -->
+
+<!-- Menu page starts -->
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+		
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-main">
+                <div class="sidebar-content">
+                    <!-- Main navigation -->
+                    <div class="sidebar-category sidebar-category-visible">
+                        <div class="category-content no-padding">
+                            <ul class="navigation navigation-main navigation-accordion">
+                                <!-- Main -->
+                                <li class="active"><a href="#/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <!-- Cousrse Management Starts -->
+                                <li class="navigation-header"><span>Course Management</span> <i class="icon-menu" title="Data visualization"></i></li>
+                                <li>
+                                    <a href="#"><i class="icon-graph"></i> <span>ILT Courses</span></a>
+                                    <ul>
+                                        <li><a href="#/changepassword">Single Add</a></li>
+                                        <li><a href="echarts_columns_waterfalls.html">Bulk Upload</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-statistics"></i> <span>ILT Session</span></a>
+                                    <ul>
+                                        <li><a href="d3_lines_basic.html">Single Add</a></li>
+                                        <li><a href="d3_lines_advanced.html">Bulk Upload</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <!-- Course Management Ends -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /main navigation -->
+
+                </div>
+            </div>
+            <!-- /main sidebar -->
+
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Page header -->
+				<div class="page-header">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4>
+						</div>    
+					</div>
+
+					<div class="breadcrumb-line">
+						<ul class="breadcrumb">
+							<li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
+							<li class="active">Dashboard</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /page header -->
+
+<!-- Menu page ends -->
+<!-- Content page starts -->
+
+				<div class="content">
+                <div ng-include="'angular/views/InformalLearning/tabs.html'"></div>
+
+                </div>
+            
+<!-- Content page Ends -->
+
+<!-- Footer page starts -->
+  <div ng-include="'angular/views/footer.html'"></div>
+<!-- Footer page Ends -->
+    
+
+					
+
+

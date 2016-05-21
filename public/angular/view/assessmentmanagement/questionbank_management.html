@@ -1,0 +1,147 @@
+
+  <form name="assessmentForm" ng-controller="assessmentCtrl as ctrl" ng-init="getassessment()">
+<div layout="row" layout-xs="column">
+  
+     <div flex>
+      <md-input-container class="md-block">
+        <label>Search</label>
+        <input  ng-model="searchassessment">
+      
+      </md-input-container>
+  </div>
+  
+</div>
+
+<div layout="row" layout-xs="column">
+
+	<!-- autocomplete for skills starts here -->
+	<div flex>
+  <md-autocomplete
+          ng-disabled="false"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedskillsType"
+          md-search-text-change="ctrl.searchskillsTypeChange(ctrl.searchskillsType)"
+          md-search-text="ctrl.searchskillsType"
+          md-selected-item-change="ctrl.selectedskillsTypeChange(item)"
+         md-items="item in ctrl.querySearchskillsType(ctrl.searchskillsType)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Skills">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchskillsType" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No SkillType matching "{{ctrl.searchskillsType}}" were not found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <!-- autocomplete of skills ends here -->
+
+  <div style="width:2%"></div>
+
+  <!-- autocomplete of tags starts here -->
+  <div flex>
+  <md-autocomplete
+          ng-disabled="false"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedtagsType"
+          md-search-text-change="ctrl.searchtagsTypeChange(ctrl.searchtagsType)"
+          md-search-text="ctrl.searchtagsType"
+          md-selected-item-change="ctrl.selectedtagsTypeChange(item)"
+         md-items="item in ctrl.querySearchtagsType(ctrl.searchtagsType)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Tags">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchtagsType" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No TagType matching "{{ctrl.searchtagsType}}" were not found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <!-- autocomplete of tags ends here -->
+
+  <div style="width:2%"></div>
+
+  <!-- autocomplete of complexity starts here -->
+  <div flex>
+  <md-autocomplete
+          ng-disabled="false"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedcomplexityType"
+          md-search-text-change="ctrl.searchcomplexityTypeChange(ctrl.searchcomplexityType)"
+          md-search-text="ctrl.searchcomplexityType"
+          md-selected-item-change="ctrl.selectedcomplexityTypeChange(item)"
+         md-items="item in ctrl.querySearchcomplexityType(ctrl.searchcomplexityType)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Complexity">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchcomplexityType" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No TagType matching "{{ctrl.searchcomplexityType}}" were not found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <!-- autocomplete of complexity ends here -->
+
+  <div style="width:2%"></div>
+
+  <!-- autocomplete of question type starts here -->
+  <div flex>
+  <md-autocomplete
+          ng-disabled="false"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedquestionsType"
+          md-search-text-change="ctrl.searchquestionsTypeChange(ctrl.searchquestionsType)"
+          md-search-text="ctrl.searchquestionsType"
+          md-selected-item-change="ctrl.selectedquestionsTypeChange(item)"
+         md-items="item in ctrl.querySearchquestionsType(ctrl.searchquestionsType)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Question Type">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchquestionsType" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No TagType matching "{{ctrl.searchquestionsType}}" were not found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <!-- autocomplete of question type ends here -->
+
+</div>
+
+<div layout="row" layout-xs="column" >
+   <div flex>
+      <md-input-container class="md-block">
+       <md-checkbox ng-model="activestatus" ng-change="getassessment()" aria-label="Checkbox 1">
+           Show Inactive Vendor also
+          </md-checkbox>
+      </md-input-container>
+  </div>
+<div flex>
+          <md-input-container class="md-block">
+       <md-button  ng-click="gotoassessmentmanagement()" style="float:right;" class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">add</md-icon></md-button>
+      </md-input-container>
+    </div>
+    
+</div>
+
+<div layout="row" layout-xs="column" ng-init="perPage=2">
+  <div flex>
+      <md-input-container class="md-block" style="float:right">
+        <label>Item Per Page</label>
+        <input type="number"   ng-model="perPage">
+        
+      </md-input-container>
+  </div>
+ </div>
+
+</form>
+
+ <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet"> 

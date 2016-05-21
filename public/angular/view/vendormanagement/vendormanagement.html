@@ -1,0 +1,169 @@
+
+<form name="CourseForm" ng-controller="vendorCtrl as ctrl" ng-init="getVendor()">
+
+<div layout="row" layout-xs="column">
+  
+     <div flex>
+      <md-input-container class="md-block">
+        <label>Search</label>
+        <input  ng-model="searchvendor">
+      
+      </md-input-container>
+  </div>
+  
+</div>
+
+<div layout="row" layout-xs="column">
+ <div flex>
+  <md-autocomplete
+          ng-disabled="ctrl.isDisabled"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedType"
+          md-search-text-change="ctrl.searchTypeChange(ctrl.searchType)"
+          md-search-text="ctrl.searchType"
+          md-selected-item-change="ctrl.selectedTypeChange(item)"
+         md-items="item in ctrl.querySearchType(ctrl.searchType)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Vendor Type">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchType" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No VendorType matching "{{ctrl.searchType}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+     <div style="width:2%"></div>
+    <div flex>
+  <md-autocomplete
+          ng-disabled="ctrl.dis_Country"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedvendorCountry"
+          md-search-text-change="ctrl.searchvendorCountryChange(ctrl.searchvendorCountry)"
+          md-search-text="ctrl.searchvendorCountry"
+          md-selected-item-change="ctrl.selectedvendorCountryChange(item)"
+         md-items="item in ctrl.querySearchvendorCountry(ctrl.searchvendorCountry)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Country">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchvendorCountry" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No Country matching "{{ctrl.searchvendorCountry}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+   <div style="width:2%"></div>
+    <div flex>
+  <md-autocomplete
+          ng-disabled="ctrl.dis_State"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedvendorState"
+          md-search-text-change="ctrl.searchvendorStateChange(ctrl.searchvendorState)"
+          md-search-text="ctrl.searchvendorState"
+          md-selected-item-change="ctrl.selectedvendorStateChange(item)"
+         md-items="item in ctrl.querySearchvendorState(ctrl.searchvendorState)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="State">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchvendorState" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No State matching "{{ctrl.searchvendorState}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <div style="width:2%"></div>
+    <div flex>
+  <md-autocomplete
+          ng-disabled="ctrl.dis_City"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedvendorCity"
+          md-search-text-change="ctrl.searchvendorCityChange(ctrl.searchvendorCity)"
+          md-search-text="ctrl.searchvendorCity"
+          md-selected-item-change="ctrl.selectedvendorCityChange(item)"
+         md-items="item in ctrl.querySearchvendorCity(ctrl.searchvendorCity)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="City">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchvendorCity" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No City matching "{{ctrl.searchvendorCity}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+</div>
+</div>
+<div layout="row" layout-xs="column" >
+   <div flex>
+      <md-input-container class="md-block">
+       <md-checkbox ng-model="activestatus" ng-change="getVendor(activestatus)" aria-label="Checkbox 1">
+           Show Inactive Vendor also
+          </md-checkbox>
+      </md-input-container>
+  </div>
+<div flex>
+          <md-input-container class="md-block">
+       <md-button  ng-click="gotoVendormanagement()" style="float:right;" class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">add</md-icon></md-button>
+      </md-input-container>
+    </div>
+    
+</div>
+
+<div layout="row" layout-xs="column" ng-init="perPage=2">
+  <div flex>
+      <md-input-container class="md-block" style="float:right">
+        <label>Item Per Page</label>
+        <input type="number"   ng-model="perPage">
+        
+      </md-input-container>
+  </div>
+ <!--  <div flex>
+          <md-input-container class="md-block" style="float:right;">
+          <label>Choose Item Per Page</label>
+       <md-select ng-model="perPage"  aria-label="itemper page" >
+          <md-option ng-repeat="type in pageSize" value="{{type}}">
+            {{type}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div> -->
+ </div>
+
+<div layout="row" layout-xs="column">
+   <div flex>
+       <table class="responstable">
+  <tr>
+    <th data-th="Course details" ng-click="sortvendor()">Vendor Company<md-icon class="material-icons"><i class="material-icons">{{vendorSortIcon}}</i></md-icon></th>
+    <th ng-click="sorttype()">Type<md-icon class="material-icons"><i class="material-icons">{{typeSortIcon}}</i></md-icon></th>
+    <th ng-click="sortlocation()">Location<md-icon class="material-icons"><i class="material-icons">{{locationSortIcon}}</i></md-icon></th>
+    <th colspan="4" style="text-align:center;">Action</th>
+  </tr>
+
+  <tr  dir-paginate="item in getVendorList | orderBy:orderList | filter:searchvendor | itemsPerPage: perPage">
+    <td>{{item.Vendor_Company}}</td>
+     <td>{{item.vendortype}}</td>
+     <td>{{item.City}}</td>
+    
+    
+   <td class="actionclass" ng-show="item.vendorstatus"><md-button class="actionbtn" ng-click="activeVendor(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons"><i class="material-icons">remove_red_eye</i></i></md-icon></md-button></td>
+   <td class="actionclass"><md-button ng-click="editVendor(item)" class="actionbtn" ng-click="" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">mode_edit</i></md-icon></md-button></td>
+    <td class="actionclass"><md-button class="actionbtn" ng-click="removeVendor(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">delete_forever</i></md-icon></md-button></td>
+  </tr>
+  
+  
+</table>
+<dir-pagination-controls template-url="angular/directives/dirPagination.tpl.html" style="float:right"></dir-pagination-controls>
+  </div> 
+</div>
+<!-- ROW Ends -->
+</form>
+
+ <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">

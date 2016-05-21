@@ -1,0 +1,65 @@
+<h5 style="text-align:center;padding-bottom:10px;">Tax Information</h5>
+<form name="carrymodelForm" ng-controller="vendorCtrl">
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column" ng-init="taxs()">
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Pan Card</label>
+        <input required name="Pan_Card" ng-model="carrymodel.Pan_Card" style="text-transform: capitalize;" ng-change="pancardCheck()">
+        <!-- <div ng-messages="carrymodelForm.Pan_Card.$error">
+          <div ng-message="required">Pan Card is required.</div>
+        </div> -->
+      </md-input-container>
+  </div>
+
+    <div flex>
+     <md-input-container class="md-block">
+        <label>TIN Number</label>
+    <input required name="TIN_Number" ng-model="carrymodel.TIN_Number" style="text-transform: capitalize;" ng-change="tinnumberCheck()">
+        <!-- <div ng-messages="carrymodelForm.TIN_Number.$error">
+          <div ng-message="required">TIN Number is required.</div>
+        </div> -->
+      </md-input-container>
+  </div>
+  
+</div>
+<!-- ROW 1 Ends -->
+<!-- ROW 2 Starts -->
+<div layout="row" layout-xs="column">
+
+  <div flex>
+      <md-input-container class="md-block">
+        <label>TAN Number</label>
+      <input required name="TAN_Number" ng-model="carrymodel.TAN_Number" style="text-transform: capitalize;" ng-change="tannumberCheck()">
+        <!-- <div ng-messages="carrymodelForm.TAN_Number.$error">
+          <div ng-message="required">TAN Number is required.</div>
+        </div> -->
+      </md-input-container>
+  </div>
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Service Tax Number</label>
+        <input required name="Service_Tax_Number" ng-model="carrymodel.Service_Tax_Number"style="text-transform: capitalize;" ng-change="servicetaxnumberCheck()">
+        <!-- <div ng-messages="carrymodelForm.Service_Tax_Number.$error">
+          <div ng-message="required">Service Tax Number is required.</div>
+        </div> -->
+      </md-input-container>
+  </div>
+
+</div>
+<!-- Row 2 Ends -->
+
+  <div style="padding-bottom:2%"></div>
+  <!-- ROW last Starts -->
+<div class="row">
+        
+          <md-button ng-click="prevaction(carrymodel)" type="button" class="md-raised md-primary">Previous</md-button>
+        
+           <md-button  ng-click="nextaction(carrymodel)" type="button" class="md-raised md-primary" style="float:right;">{{nextName}}</md-button>
+        
+</div>
+<!-- ROW last Ends -->
+</form>
+
+ 
+

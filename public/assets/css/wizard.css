@@ -1,0 +1,112 @@
+body, html{
+	background: none !important;
+}
+@media only screen and (min-width:960px){
+h5{
+	display: none;
+}
+
+.stepwrapper{
+	padding-left:10%;
+	padding-right:10%;
+	padding-top: 5%;
+	padding-bottom:5%;
+	margin-top: 3%;
+	background-color: white;
+}
+
+.content-wrapper{
+	background-color: #e1e1e1;
+}
+.wizardClass{
+float: left;
+    width: 15%;
+    position: relative;
+    background: white;
+    padding-top: 2%;
+}
+.md-fab{
+border: none;
+margin: 0 auto;
+display: inherit;
+}
+.md-fab:disabled{
+	background-color: lightgray !important;
+}
+
+.wizardClass p{
+text-align: center;
+padding-top:10px;
+}
+.borderline{
+position: relative;
+max-width: 100%;
+height: 2px;
+background-color: gray;
+/*z-index: -1000;*/
+bottom: 18px;
+}
+#btn0,#btns0{
+background-color: orange;
+}
+
+.clearfix{
+clear:both;
+}
+.stepcontent{
+margin-top:10px;
+clear:both;
+width: 100%;
+background-color: white;
+}
+
+}
+/*6889954 mts activation*/
+@media only screen and (max-width:960px){
+
+.wizardClass{
+float: left;
+    /*width: 15%;*/
+    margin-bottom:5%;
+}
+.wizardmenu{
+	display:none;
+
+}
+.md-fab{
+border: none;
+margin: 0 auto;
+display: inherit;
+}
+.md-fab:disabled{
+	background-color: lightgray !important;
+}
+
+.wizardClass p{
+text-align: center;
+padding-top:10px;
+}
+.borderline{
+position: relative;
+width: 100%;
+height: 2px;
+background-color: #26a69a;
+/*z-index: -1000;*/
+bottom: 18px;
+display: none;
+}
+
+#btn0{
+background-color: orange;
+}
+.clearfix{
+clear:both;
+}
+.stepcontent{
+margin-top:10px;
+clear:both;
+width: 100%;
+background-color: white;
+}
+}
+

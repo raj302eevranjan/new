@@ -1,0 +1,70 @@
+<h5 style="text-align:center;padding-bottom:10px;">Equipments Info</h5>
+<form name="carrymodelForm"ng-controller="vendorCtrl">
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column" ng-init="checkboxs();taxs()">
+	
+  <div flex>
+     <md-checkbox ng-model="carrymodel.BWPrinting" aria-label="Checkbox 1" ng-change="changeBWPrinting()">
+            B/W Printing
+          </md-checkbox>  
+  </div>
+ 
+</div>
+<!-- ROW 1 Ends -->
+
+<!-- ROW 2 Starts -->
+<div layout="row" layout-xs="column">
+  
+  <div flex>
+     <md-checkbox ng-model="carrymodel.ColorPrinting" aria-label="Checkbox 1"ng-change="changeColorPrinting()">
+           Color Printing
+          </md-checkbox>
+  </div>
+ 
+</div>
+<!-- ROW 2 Ends -->
+<!-- ROW 3 Starts -->
+<div layout="row" layout-xs="column">
+  
+  <div flex>
+  <md-checkbox ng-model="carrymodel.Binding" aria-label="Checkbox 1" 
+  ng-change="changeBinding()">
+        Binding
+          </md-checkbox>
+  </div>
+ 
+</div>
+<!-- ROW 3 Ends -->
+<!-- ROW 4 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+   <md-checkbox ng-model="carrymodel.PhotoCopying" aria-label="Checkbox 1" ng-change="changePhotoCopying()">
+           Photo Copying
+     </md-checkbox>
+  </div>
+ 
+</div>
+<!-- ROW 4 Ends -->
+<!-- ROW 5 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+ <md-checkbox ng-model="carrymodel.Lamination" aria-label="Checkbox 1" ng-change="changeLamination()">
+           Lamination
+          </md-checkbox>
+  </div>
+ 
+</div>
+<!-- ROW 5 Ends -->
+
+<div style="padding-bottom:2%"></div>
+<!-- ROW last Starts -->
+<div class="row">
+        
+          <md-button ng-click="prevaction(carrymodel)" type="button" class="md-raised md-primary">Previous</md-button>
+        
+           <md-button  ng-click="nextaction(carrymodel)" type="button" class="md-raised md-primary" style="float:right;" >{{nextName}}</md-button>
+        
+</div>
+<!-- ROW last Ends -->
+</form>
+ 

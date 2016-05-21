@@ -1,0 +1,43 @@
+<md-dialog aria-label="Pre-Requisite"  ng-cloak >
+  <form ng-controller="addCourseCtrl">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Course List</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          x
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+  <div class="md-dialog-content">
+        
+    <table class="responstable">
+    <tr>
+    <th><md-checkbox ng-model="selectedAll" ng-change="checkAll()" aria-label="Checkbox 1">
+          </md-checkbox></th>
+    <th data-th="Course details"><span>Course ID</span></th>
+    <th>Course Title</th>
+    <th>Type</th>
+    <th>Duration</th>
+    </tr>
+  
+    <tr ng-repeat="item in JsonResult">
+    <td><md-checkbox ng-change="checkOne($index)" class="checkid" ng-model="item.Selected" aria-label="Checkbox 1">
+          </md-checkbox></td>
+    <td>{{item.id}}</td>
+    <td>{{item.title}}</td>
+    <td>{{item.type}}</td>
+    <td>{{item.duration}}</td>
+    </tr> 
+  </table>
+  </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="saveAction()" style="margin-right:20px;">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+<s

@@ -1,0 +1,29 @@
+<form name="masterForm" ng-controller="locationCtrl as ctrl">
+
+<div layout="row" layout-xs="column" >
+   <div flex>
+      
+  </div>
+
+    <div flex>
+          <md-input-container class="md-block">
+          <label>Choose Master Types</label>
+       <md-select ng-model="masterType"  aria-label="Type" >
+          <md-option ng-repeat="master in masters" value="{{master}}">
+            {{master}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+     <div flex>
+          <md-input-container class="md-block">
+       <md-button ng-disabled="!masterType" ng-click="addMasterdata(masterType)" style="float:right;" class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">add</md-icon></md-button>
+      </md-input-container>
+    </div>
+    
+</div>
+</form>
+
+ <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">

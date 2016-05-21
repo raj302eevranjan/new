@@ -1,0 +1,77 @@
+<h5 style="text-align:center;padding-bottom:10px;">F&B Info</h5>
+<form name="carrymodelForm"ng-controller="vendorCtrl">
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column">
+  
+  <div flex>
+     <md-checkbox ng-model="carrymodel.Supplies_Veg_Food" aria-label="Checkbox 1">
+            Supplies Veg Food
+          </md-checkbox>  
+  </div>
+ 
+</div>
+<!-- ROW 1 Ends -->
+
+<!-- ROW 2 StSarts -->
+<div layout="row" layout-xs="column">
+  
+  <div flex>
+     <md-checkbox ng-model="carrymodel.Supplies_Non_Veg_Food" aria-label="Checkbox 1">
+          Supplies Non Veg Food
+          </md-checkbox>
+  </div>
+ </div>
+</br>
+<!-- ng-show="addskill" -->
+  <div flex >
+      <md-contact-chips
+        ng-model="carrymodel.tags"
+        md-contacts="ctrl.delayedQuerySearchTags($query)"
+        md-contact-name="name"
+        md-require-match="true"
+        md-highlight-flags="i"
+        filter-selected="ctrl.filterSelected"
+        placeholder="Tags"
+        secondary-placeholder="Tags">
+    </md-contact-chips>
+  </div>
+</br>
+</br>
+<!-- ROW 2 Ends -->
+<!-- ROW 3 Starts -->
+<div layout="row" layout-xs="column">
+  
+  <div flex>
+  <md-checkbox ng-model="carrymodel.Supplies_Water" aria-label="Checkbox 1">
+            Supplies Water
+          </md-checkbox>
+  </div>
+ 
+</div>
+<!-- ROW 3 Ends -->
+<!-- ROW 4 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+   <md-checkbox ng-model="carrymodel.Supplies_Beverages" aria-label="Checkbox 1">
+           Supplies Beverages
+     </md-checkbox>
+  </div>
+ 
+</div>
+<!-- ROW 4 Ends -->
+<!-- ROW 5 Starts -->
+
+<!-- ROW 5 Ends -->
+
+<div style="padding-bottom:2%"></div>
+<!-- ROW last Starts -->
+<div class="row">
+        
+          <md-button ng-click="prevaction(carrymodel)" type="button" class="md-raised md-primary">Previous</md-button>
+        
+           <md-button  ng-click="nextaction(carrymodel)" type="button" class="md-raised md-primary" style="float:right;">{{nextName}}</md-button>
+        
+</div>
+<!-- ROW last Ends -->
+</form>
+ 

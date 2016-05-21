@@ -1,0 +1,92 @@
+<h5 style="text-align:center;padding-bottom:10px;">Competency Info</h5> 
+<form name="carrymodelForm" ng-controller="vendorCtrl as ctrl">
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column" ng-init="compInit()">
+<div flex>
+   <md-button ng-click="showAdvanced($event)"  class="md-raised md-primary" style="float:right;" aria-label="Info">Add Competency</md-button>
+</div>
+</div>
+<div layout="row" layout-xs="column" ng-show="carrymodel.addcomp">
+
+	 <div flex >
+      <table class="responstable">
+  <tr>
+    <th>Competency</th>
+    <th data-th="Course details"><span>Sub Competency</span></th>
+    
+    <th colspan="4" style="text-align:center;">Action</th>
+  </tr>
+  
+  <tr ng-repeat="item in carrymodel.selectCompetency_data">
+    <td>{{item.competency}}</td>
+    <td>{{item.sub_competency}}</td>   
+    <td class="actionclass"><md-button ng-click="removeCompetency($index)" aria-label="Info"><md-icon class="material-icons">cancel</md-icon></md-button></td>
+  </tr> 
+  
+  
+</table>
+  </div> 
+</div>
+<!-- ROW 1 Ends -->
+
+<!-- Row 2 start -->
+<div layout="row" layout-xs="column">
+  <div flex>
+   <md-button ng-click="add_skills()"  class="md-raised md-primary" style="float:right;" aria-label="Info">Add Skills</md-button>
+</div>
+ </div> 
+<!-- Row 2 end -->
+<!-- Row  3 Start -->
+<div layout="row" layout-xs="column" ng-show="addskill">
+
+  <div flex >
+      <md-chips ng-model="ctrl.skills" readonly="ctrl.readonly" placeholder="Enter a Skils" delete-button-label="Remove Skils" delete-hint="Press delete to remove skills" secondary-placeholder="+Skils"></md-chips>
+  </div>
+  <div style="width:2%"></div>
+  <div flex >
+      <md-chips ng-model="ctrl.tags" readonly="ctrl.readonly" placeholder="Enter a tag" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+Tag"></md-chips>
+  </div>
+ 
+</div>
+<!-- Row 3 end -->
+
+<!-- ROW 4 Starts -->
+<div layout="row" layout-xs="column">
+<div flex>
+   <md-button ng-click="showAdvanced1($event)"  class="md-raised md-primary" style="float:right;" aria-label="Info">Add Certification</md-button>
+</div>
+</div>
+<div layout="row" layout-xs="column" ng-show="carrymodel.addcert">
+
+   <div flex >
+      <table class="responstable">
+  <tr>
+    <th>Certifying Authority</th>
+    <th data-th="Course details"><span>Certification</span></th>
+    
+    <th colspan="4" style="text-align:center;">Action</th>
+  </tr>
+  
+  <tr ng-repeat="item in carrymodel.selectCertification_data">
+    <td>{{item.Certifying_Authority}}</td>
+    <td>{{item.Certification}}</td>   
+    <td class="actionclass"><md-button ng-click="removeCertification($index)" aria-label="Info"><md-icon class="material-icons">cancel</md-icon></md-button></td>
+  </tr> 
+  
+  
+</table>
+  </div> 
+</div>
+<!-- ROW 4 Ends -->
+</form>
+<div style="padding-bottom:2%"></div>
+<!-- ROW last Starts -->
+<div class="row">
+        
+          <md-button ng-click="prevaction(carrymodel)" type="button" class="md-raised md-primary">Previous</md-button>
+        
+           <md-button  ng-click="nextaction(carrymodel)" type="button" class="md-raised md-primary" style="float:right;">{{nextName}}</md-button>
+        
+</div>
+<!-- ROW last Ends -->
+ <link href="assets/css/course.css" rel="stylesheet">

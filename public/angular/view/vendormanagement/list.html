@@ -1,0 +1,73 @@
+
+<form name="CourseForm" ng-controller="vendorCtrl as ctrl" ng-init="getVendor();checkboxs();taxs();">
+
+<div layout="row" layout-xs="column" >
+   <div flex>
+      <md-input-container class="md-block">
+       <md-checkbox ng-model="activestatus" ng-change="getVendor(activestatus)" aria-label="Checkbox 1">
+           Show Inactive Vendor also
+          </md-checkbox>
+      </md-input-container>
+  </div>
+
+    <div flex>
+          <md-input-container class="md-block">
+          <label>Choose Vendor Type</label>
+       <md-select ng-model="carrymodel.vendortype" ng-change="changeType()"  aria-label="Type" >
+          <md-option ng-repeat="type in types" value="{{type}}">
+            {{type}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+     <div flex>
+          <md-input-container class="md-block">
+       <md-button ng-disabled="!carrymodel.vendortype" ng-click="addVendor()" style="float:right;" class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">add</md-icon></md-button>
+      </md-input-container>
+    </div>
+    
+</div>
+
+<div style="padding-bottom:1%"></div>
+<!-- row  start -->
+<div layout="row" layout-xs="column" ng-init="perPage=5">
+  <div flex>
+      <md-input-container class="md-block" style="float:right">
+        <label style="text-style:bold;text-color:black">Item Per Page</label>
+        <input type="number"   ng-model="perPage">
+        
+      </md-input-container>
+  </div>
+ </div> 
+ <!-- row end -->  
+<div layout="row" layout-xs="column">
+   <div flex>
+       <table class="responstable">
+  <tr>
+    <th data-th="Course details" ng-click="sortvendor()">Vendor Company<md-icon class="material-icons"><i class="material-icons">{{vendorSortIcon}}</i></md-icon></th>
+    <th ng-click="sorttype()">Type<md-icon class="material-icons"><i class="material-icons">{{typeSortIcon}}</i></md-icon></th>
+    
+    <th colspan="4" style="text-align:center;">Action</th>
+  </tr>
+
+  <tr dir-paginate="item in getVendorList | itemsPerPage: perPage | orderBy:orderList">
+    <td>{{item.Vendor_Company}}</td>
+     <td>{{item.vendortype}}</td>
+    
+    <td class="actionclass" ng-hide="item.vendorstatus"><md-button class="actionbtn" ng-click="activeVendor(item)" aria-label="Info"><i class="fa fa-eye-slash"></i></md-button></td>
+   <td class="actionclass" ng-show="item.vendorstatus"><md-button class="actionbtn" ng-click="activeVendor(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons"><i class="material-icons">remove_red_eye</i></i></md-icon></md-button></td>
+   <td class="actionclass"><md-button ng-click="editVendor(item)" class="actionbtn" ng-click="" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">mode_edit</i></md-icon></md-button></td>
+    <td class="actionclass"><md-button class="actionbtn" ng-click="removeVendor(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">delete_forever</i></md-icon></md-button></td>
+  </tr>
+  
+  
+</table>
+<dir-pagination-controls template-url="angular/directives/dirPagination.tpl.html" style="float:right"></dir-pagination-controls>
+  </div> 
+</div>
+<!-- ROW 1 Ends -->
+</form>
+
+ <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">

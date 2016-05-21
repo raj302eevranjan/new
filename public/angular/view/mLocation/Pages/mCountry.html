@@ -1,0 +1,53 @@
+<form name="masterForm" ng-controller="locationCtrl as ctrl">
+	
+   <div layout="row" layout-xs="column">
+  
+     <div flex>
+      <md-input-container class="md-block">
+        <label>Country</label>
+        <input  ng-model="mcountry">
+      
+      </md-input-container>
+    </div>
+   </div>
+   <div layout="row" layout-xs="column">
+    <div flex ng-show="editcountry">
+      <md-input-container class="md-block">
+       <md-checkbox ng-model="activestatus" ng-change="changeActiveStatus(activestatus)" aria-label="Checkbox 1">
+           Show Inactive records also
+          </md-checkbox>
+      </md-input-container>
+  </div>
+    <div flex>
+      <md-button class="md-raised md-primary"  ng-click="addCountry(mcountry)" style="float:right">{{action_name}}</md-button>
+    </div>
+    <div flex ng-hide="editcountry">
+      <md-button class="md-raised md-primary"  ng-click="cancelCountry()" style="float:right">Cancel</md-button>
+    </div>
+   </div>
+
+<div layout="row" layout-xs="column" ng-show="editcountry">
+   <div flex>
+       <table class="responstable">
+  <tr>
+    <th data-th="Country details" ng-click="sortCountry()">Country<md-icon class="material-icons"><i class="material-icons">{{CountrySortIcon}}</i></md-icon></th>
+    <th colspan="3" style="text-align:center;">Action</th>
+  </tr>
+
+  <tr  dir-paginate="item in mLocation | orderBy:orderList | itemsPerPage: 4" >
+    <td>{{item.mcountry}}</td>
+     
+    
+   <td class="actionclass" ng-show="item.status"><md-button class="actionbtn" ng-click="activeCountry(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons"><i class="material-icons">remove_red_eye</i></i></md-icon></md-button></td>
+   <td class="actionclass"><md-button ng-click="editCountry(item)" class="actionbtn" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">mode_edit</i></md-icon></md-button></td>
+    <td class="actionclass"><md-button class="actionbtn" ng-click="removeCountry(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">delete_forever</i></md-icon></md-button></td>
+  </tr>
+    
+</table>
+<dir-pagination-controls template-url="angular/directives/dirPagination.tpl.html" style="float:right"></dir-pagination-controls>
+  </div> 
+</div>
+</form>
+  <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">

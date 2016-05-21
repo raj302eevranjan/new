@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LMS</title>
+       
+       <!-- Global JS files -->
+	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	<!-- /Global JS files -->
+
+	<!-- Web Call JS -->
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+	<!-- /Web Call JS -->
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
+	<link href="assets/icomoon/styles.css" rel="stylesheet" type="text/css">
+	
+	<!-- /global stylesheets -->
+
+
+<!-- MATERIAL DESIGN CALL STARTS -->
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.js"></script>
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+	<script src="assets/js/angular-messages.min.js"></script>
+	<script src="assets/js/angular-messages.js"></script>
+	<script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.js"></script>
+
+	<link href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.3/angular-material.min.css" rel="stylesheet" type="text/css">
+ <script src="assets/js/angular-messages.min.js"></script>
+	<script src="assets/js/angular-messages.js"></script>
+	<!-- MATERIAL DESIGN CALL ENDS -->
+
+	<!-- Controllers-->
+	<script type="text/javascript" src="angular/controller/maincontroller.js"></script>
+	<script type="text/javascript" src="angular/controller/InformalLearning/ILController.js"></script>
+	<script type="text/javascript" src="angular/service/InformalLearning/ILService.js"></script>
+	<script type="text/javascript" src="angular/controller/dash1.js"></script>
+	<script src="angular/controller/authcontroller.js"></script>
+	<script src="angular/service/authService.js"></script>
+	<!-- /Controllers -->
+	<!-- Pagination -->
+<script src="angular/directives/dirPagination.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-sanitize.min.js"></script>
+
+<!-- Vendor management -->
+<script src="angular/controller/VendorManagement/VendorController.js"></script>
+<script type="text/javascript" src="angular/service/VendorService/VendorService.js"></script>
+
+<!-- Assessment management -->
+<script src="angular/controller/assessmentmanagement/assessmentcontroller.js"></script>
+<script type="text/javascript" src="angular/service/assessmentservice/assessmentservice.js"></script>
+
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- dashctrl -->
+	<script type="text/javascript" src="angular/controller/dashctrl.js"></script>
+<!-- wizard service -->
+<script type="text/javascript" src="angular/directives/wizardservice.js"></script>
+<!-- morganization  -->
+<script type="text/javascript" src="angular/controller/mOrganization/mOrganizationController.js"></script>
+<script type="text/javascript" src="angular/service/mOrganization/mOrgService.js"></script>
+
+<!-- mlocation -->
+<script type="text/javascript" src="angular/controller/mLocation/mLocationController.js"></script>
+<script type="text/javascript" src="angular/service/mLocation/mLocationService.js"></script>
+
+<!-- add curriculum -->
+<script src="angular/controller/Curriculum/Curriculum_controller.js"></script>
+</head>
+
+
+
+<body ng-controller="maincontroller">
+	<!-- Top Navbar Starts -->
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">LMS</a>
+
+			<ul class="nav navbar-nav visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-collapse collapse" id="navbar-mobile">
+			<ul class="nav navbar-nav">
+				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-z">
+				<li class="dropdown dropdown-user">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+						<!-- <img src="assets/images/placeholder.jpg" alt=""> -->
+						<span>Bhuvaneh</span>
+						<i class="caret"></i>
+					</a>
+			<ul class="dropdown-menu dropdown-menu-right">
+						<li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- Top Navbar Ends -->
+ 
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main sidebar Starts -->
+			<div class="sidebar sidebar-main">
+				<div class="sidebar-content">
+
+					<!-- Main navigation -->
+					<div class="sidebar-category sidebar-category-visible">
+						<div class="category-content no-padding">
+							<!-- page kits -->
+							<ul class="navigation navigation-main navigation-accordion">
+
+								<!-- Main -->
+							<!-- 	<li class="navigation-header"><span>Catalogue Management
+</span> <i class="icon-menu" title="Main pages"></i></li> -->
+
+
+
+
+<!-- Home  -->
+<li>
+<a href="#"><span>Home</span></a>
+<ul>
+<li><a href="/dash1"><i class="material-icons">notifications_active</i>MyNotications</a></li>
+<li><a href="/dash1"><i class="material-icons">assignment</i>
+MyActions</a></li>
+<li><a href="/dash1"><i class="material-icons">rss_feed</i>
+Annoucements</a></li>
+</ul>
+</li>
+<!-- /Home  -->
+
+
+<!-- Learner  -->
+<li>
+<a href="#"><span>Learner</span></a>
+<ul>
+<li><a href="/dash1"><i class="material-icons">chrome_reader_mode</i>
+My Learning</a></li>
+<li><a href="/dash1"><i class="material-icons">share</i>
+My Social Activities</a></li>
+<li><a href="/dash1"><i class="material-icons">youtube_searched_for</i>
+Browse Learning</a></li>
+<li><a href="/dash1"><i class="material-icons">search</i>
+Search Learning</a></li>
+<li><a href="/dash1"><i class="material-icons">account_circle</i>
+My Profile</a></li>
+<li><a href="/dash1"><i class="material-icons">apps</i>
+Learning Personalization</a></li>
+<li><a href="/dash1"><i class="material-icons">feedback</i>
+Learning Evaluation</a></li>
+</ul>
+</li>
+<!-- /Learner  -->
+
+<!-- Learn Ops Admin  -->
+<li>
+<a href="#"><span>Learn Ops Admin</span></a>
+<ul>
+<li><a href="/dash1"><i class="material-icons">assignment_turned_in</i>
+Close Session</a></li>
+<li><a href="/dash1"><i class="material-icons">location_city</i>
+Venue Management</a></li>
+<li><a href="/dash1"><i class="material-icons">person_outline</i>
+Vendor Management</a></li>
+<li><a href="/dash1"><i class="material-icons">account_circle</i>
+Trainer Management</a></li>
+</ul>
+</li>
+<!-- /Learn Ops Admin  -->
+
+
+<!-- People Management  -->
+<li>
+<a href="#"><span>People Management</span></a>
+<ul>
+<li><a href="/"><i class="material-icons">supervisor_account</i>MyTeam Learning</a></li>
+<li><a href="/dash1"><i class="material-icons">assignment_turned_in</i>
+Assign Learning</a></li>
+</ul>
+</li>
+<!-- /People Management  -->
+
+
+
+<!-- Catalog Management  -->
+<li>
+<a href="#"><span>Catalog Management</span></a>
+<ul>
+<li><a href="/"><i class="material-icons">event</i>Formal Learning</a></li>
+<li><a href="/dash1"><i class="material-icons">library_books</i>
+Informal Learning</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Bulk Upload</a></li>
+</ul>
+</li>
+<!-- /Catalog Management  -->
+
+
+<!-- Learning Partner  -->
+<li>
+<a href="#"><span>Learning Partner</span></a>
+<ul>
+<li><a href="/"><i class="material-icons">library_books</i>
+Learning Needs Identification</a></li>
+<li><a href="/"><i class="material-icons">assessment</i>
+Learning Needs Analysis</a></li>
+<li><a href="/dash1"><i class="material-icons">library_books</i>
+Curriculum Management</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Cohart Management</a></li>
+<li><a href="/dash1"><i class="material-icons">assignment_turned_in</i>
+Assign Learning</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Competency Management</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Competency Assessment</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Assessment Center</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Development Center</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Coaching Management</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Mentoring Management</a></li>
+<li><a href="/dash1"><i class="material-icons">cloud_upload</i>
+Ad-hoc learning requests</a></li>
+<li><a href="/dash1"><i class="material-icons">share</i>
+Learning Community</a></li>
+<li><a href="/dash1"><i class="material-icons">videogame_asset</i>
+Gamification</a></li>
+</ul>
+</li>
+<!-- /Learning Partner  -->
+
+<!-- Assessment Management  -->
+<li>
+<a href="#"><span>Assessment Management</span></a>
+<ul>
+<li><a href="/questionbankmanagement"><i class="material-icons">question_answer</i>Question Bank Management</a></li>
+<li><a href="/dash1"><i class="material-icons">library_books</i>
+Survey Management</a></li>
+<li><a href="/assessmentmanagement"><i class="material-icons">cloud_upload</i>
+Assessment Management</a></li>
+<li><a href="/dash1"><i class="material-icons">school</i>
+Certification Management</a></li>
+</ul>
+</li>
+<!-- /Assessment Management  -->
+
+
+<!-- Security Admin -->
+<li>
+<a href="#"><span>Security Admin</span></a>
+<ul>
+<li><a href="/"><i class="material-icons">supervisor_account</i>User Management
+</a></li>
+<li><a href="/dash1"><i class="material-icons">open_in_browser</i>
+Bulk Upload Users</a></li>
+<li><a href="/dash1"><i class="material-icons">security</i>
+Security Roles Management</a></li>
+<li><a href="/dash1"><i class="material-icons">important_devices</i>
+Device Management</a></li>
+</ul>
+</li>
+<!-- /Security Admin  -->
+<!-- Vendor management -->
+<li>
+	<a href="#"><span>Vendor Management</span></a>
+	<ul>
+		<li>
+			<a href="/vendormanagement"><i class="material-icons">supervisor_account</i>Vendor Management</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i>Equipment Vendor</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i>ILT Vendor</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i>ELearn Vendor</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i>MLearn Vendor</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i>Stationary Vendor</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i>Printing Vendor</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i> 
+				Travel Vendor</a>
+        </li>
+        <li>
+			<a href="/vendor"><i class="material-icons">supervisor_account</i>
+			F&B Vendor</a>
+        </li>
+
+</li>	
+</ul>
+<!-- vendor management -->
+
+<!-- master data mangement -->
+<li>
+	<a href="#"><span>Master Data Management</span></a>
+	<ul>
+		<li>
+			<a href="/mastermOrganization/"><i class="material-icons">supervisor_account</i>Organization Master Management</a>
+        </li>
+     </ul> 
+     <ul>
+		<li>
+			<a href="/mastermLocation"><i class="material-icons">supervisor_account</i>Location Master Management</a>
+        </li>
+     </ul>
+  </li>
+<!-- master data management end -->
+<!-- curriculum mangement -->
+<li>
+<a href="#"><span>Curriculm Management</span></a>
+	<ul>
+		<li>
+			<a href="/add_curriculum"><i class="material-icons">supervisor_account</i>Add Curriculum</a>
+        </li>
+     </ul> 
+ </li>
+<!-- curriculum management -->
+	<!-- /page kits -->
+
+							
+						</div>
+					</div>
+					<!-- /main navigation -->
+
+				</div>
+			</div>
+			<!-- Main sidebar Ends -->
+
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Page header -->
+				<div class="page-header">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4>
+						</div>
+					</div>
+
+					<div class="breadcrumb-line">
+						<ul class="breadcrumb">
+							<li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
+							<li class="active">Dashboard</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /page header -->
+
+
+				<!-- Content area -->
+				<div class="content">
+
+					<!-- Main charts -->
+					<div class="row">
+						<!-- view -->
+					<div ng-view>
+					</div>
+						
+					</div>
+					<!-- /main charts -->
+
+					<!-- Footer -->
+					<div class="footer text-muted">
+						&copy; 2016. <a href="#">LMS</a>
+					</div>
+					<!-- /footer -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+
+
+<style type="text/css">
+.material-icons {
+    font-size: 17px !important;
+}
+</style>
+</html>
+
+

@@ -1,0 +1,85 @@
+<h5 style="text-align:center;padding-bottom:10px;">Design Info</h5>
+<form name="carrymodelForm" ng-controller="curriculumCtrl">
+<div layout="row" layout-xs="column">
+  
+      
+      	<!-- class="responstable" -->
+       
+  <div flex>
+  	<md-input-container class="md-block" flex-gt-sm="">
+    <b>Section</b>
+    </md-input-container>
+   </div>
+    <div flex>
+     <md-input-container class="md-block" flex-gt-sm="">
+       <md-button  ng-click="addCourses()"  class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">add</md-icon></md-button>
+      </md-input-container>
+  </div>
+  <div flex>
+     <md-input-container class="md-block" flex-gt-sm="">
+       <md-button  ng-click=""  class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">remove</md-icon></md-button>
+      </md-input-container>
+  </div>
+   
+    <div flex>
+    	<md-input-container class="md-block" flex-gt-sm="">
+    <b>Learning Activity</b>
+    </md-input-container>
+     </div>
+     <div flex>
+     <md-input-container class="md-block" flex-gt-sm="">
+       <md-button  ng-click=""  class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">add</md-icon></md-button>
+      </md-input-container>
+  </div>
+  <div flex>
+     <md-input-container class="md-block" flex-gt-sm="">
+       <md-button  ng-click=""  class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">remove</md-icon></md-button>
+      </md-input-container>
+  </div>
+</div>
+<!-- class="responstable" -->
+  <table  >
+    <tr ng-repeat="item in carrymodel.selectCourse_data" >
+<div layout="row" layout-xs="column">
+  	<div flex="20" ng-init="number=1">
+       <md-input-container class="md-block" >
+      <label style="text-style:bold;text-color:black"></label>
+        <input type="number"   ng-model="number">
+        
+      </md-input-container>
+      </div>
+      <div flex="5"></div>
+	<div flex="60">
+          <md-input-container class="md-block" >
+            <label>Section Name</label>
+            <input ng-model="section_name">
+          </md-input-container>
+        </div>
+        <div flex="5"></div>
+        <div flex="20" ng-init="number=1">
+       <md-input-container class="md-block" >
+      <label style="text-style:bold;text-color:black"></label>
+        <input type="number"   ng-model="number">
+        
+      </md-input-container>
+      </div>
+      
+</div>
+  </tr>
+  <tr ng-repeat="item in carrymodel.selectCourse_data">
+  	<td>{{$index+1}}</td>
+    <td>{{item.course}}</td>
+    <td class="actionclass"><md-button ng-click="CourseMoveup($index)" aria-label="Info"><md-icon class="material-icons">keyboard_arrow_up</md-icon></md-button></td>
+    <td class="actionclass"><md-button ng-click="CourseMovedown($index)" aria-label="Info"><md-icon class="material-icons">keyboard_arrow_down</md-icon></md-button></td> 
+     <td>
+     <md-checkbox ng-model="mandatory" aria-label="Checkbox 1"  ng-change="CourseMandatory(mandatory)">
+             Mandatory
+        </md-checkbox>  
+  </td>
+    <td class="actionclass"><md-button ng-click="removeCourse($index)" aria-label="Info"><md-icon class="material-icons">cancel</md-icon></md-button></td>
+  </tr> 
+</table>
+    </div>    
+  
+</div>
+</form>

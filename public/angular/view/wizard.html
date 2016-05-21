@@ -1,0 +1,21 @@
+<div class="col s12">
+<div class="wizardClass" ng-repeat="menu in menuList" wizard-calc>
+  <md-button id="btn{{$index}}" class="md-fab md-mini md-primary" ng-model="menu" ng-click="stepAction($index)" btn-status>
+    <md-icon ng-hide="currentIndex==$index" class="material-icons" >done</md-icon>
+    <md-icon ng-show="currentIndex==$index" class="material-icons">mode_edit</md-icon>
+    <!-- <span ng-hide="currentIndex==$index">{{$index+1}}</span> -->
+  </md-button>  
+  <div id="btns{{$index}}" class="borderline"></div>
+  <p class="wizardmenu">{{menu}}</p>
+</div>
+<div class="clearfix"></div>
+<div class="stepwrapper">
+<div class="row">
+<div class="stepcontent" ng-show="currentIndex==$index" ng-repeat="menu in menuList" >
+  <div ng-include="templatepath"></div>
+</div>
+</div>
+</div>
+
+ <link href="assets/css/wizard.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/table.css" rel="stylesheet" type="text/css">

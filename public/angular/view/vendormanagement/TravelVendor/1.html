@@ -1,0 +1,95 @@
+<h5 style="text-align:center;padding-bottom:10px;">Travel Info</h5>
+<form name="carrymodelForm"ng-controller="vendorCtrl">
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column">
+  
+  <div flex>
+     <md-checkbox ng-model="carrymodel.Domestic_Travel" aria-label="Checkbox 1">
+            Domestic Travel-Air,Road,Train,Sea
+          </md-checkbox>  
+  </div>
+ 
+
+<!-- ROW 1 Ends -->
+
+<!-- ROW 2 Starts -->
+
+  <div flex>
+     <md-checkbox ng-model="carrymodel.International_Travel" aria-label="Checkbox 1">
+            International Travel
+          </md-checkbox>
+  </div>
+ 
+</div>
+<!-- ROW 2 Ends -->
+<!-- ROW 3 Starts -->
+<div layout="row" layout-xs="column">
+  
+  <div flex>
+  <md-checkbox ng-model="carrymodel.Hotel_Accomodation_Domestic" aria-label="Checkbox 1">
+            Hotel Accomodation-Domestic
+          </md-checkbox>
+  </div>
+ 
+
+<!-- ROW 3 Ends -->
+<!-- ROW 4 Starts -->
+  <div flex>
+   <md-checkbox ng-model="carrymodel.Hotel_Accomodation_International" aria-label="Checkbox 1">
+            Hotel Accomodation-International
+     </md-checkbox>
+  </div>
+ 
+</div>
+<div layout="row" layout-xs="column">
+  <div flex>
+   <md-checkbox ng-model="carrymodel.Printing_Photo_Copy_Machine" aria-label="Checkbox 1">
+            Passport
+     </md-checkbox>
+  </div>
+ 
+
+
+  <div flex>
+   <md-checkbox ng-model="carrymodel.Visa" aria-label="Checkbox 1">
+            Visa
+     </md-checkbox>
+  </div>
+ 
+</div>
+<div layout="row" layout-xs="column">
+  <div flex>
+   <md-checkbox ng-model="carrymodel.Travel_Insurance" aria-label="Checkbox 1">
+            Travel Insurance
+     </md-checkbox>
+  </div>
+ 
+
+  <div flex>
+   <md-checkbox ng-model="carrymodel.Foreign_Currency" aria-label="Checkbox 1">
+            Foreign Currency
+     </md-checkbox>
+  </div>
+ 
+</div>
+<div layout="row" layout-xs="column">
+  <div flex>
+   <md-checkbox ng-model="carrymodel.Cab_Services" aria-label="Checkbox 1">
+         Cab Services
+     </md-checkbox>
+  </div>
+ 
+</div>
+
+<div style="padding-bottom:2%"></div>
+<!-- ROW last Starts -->
+<div class="row">
+        
+          <md-button ng-click="prevaction(carrymodel)" type="button" class="md-raised md-primary">Previous</md-button>
+        
+           <md-button  ng-click="nextaction(carrymodel)" type="button" class="md-raised md-primary" style="float:right;">{{nextName}}</md-button>
+        
+</div>
+<!-- ROW last Ends -->
+</form>
+ 

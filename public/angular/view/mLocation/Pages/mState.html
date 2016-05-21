@@ -1,0 +1,90 @@
+
+<form name="masterForm" ng-controller="locationCtrl as ctrl">
+	  <!-- ROW 1 start -->
+<div layout="row" layout-xs="column" ng-init="getLocation()">
+ <div flex>
+  
+      <md-autocomplete
+           md-no-cache="true"
+           ng-disabled="dis_country"
+          md-selected-item="ctrl.selectedCountry"
+          md-search-text-change="ctrl.searchCountryChange(ctrl.searchCountry)"
+          md-search-text="ctrl.searchCountry"
+          md-selected-item-change="ctrl.selectedCountryChange(item)"
+         md-items="item in ctrl.querySearchCountry(ctrl.searchCountry)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Country">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchCountry" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No Country matching "{{ctrl.searchCountry}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+</div>
+<div style="padding=2%"></div>
+   <div layout="row" layout-xs="column">
+  
+     <div flex>
+      <md-input-container class="md-block">
+        <label>State</label>
+        <input  ng-model="mstate">
+      
+      </md-input-container>
+    </div>
+   </div>
+   <div layout="row" layout-xs="column" ng-init="perPage=5" ng-show="editState">
+  <div flex>
+      <md-input-container class="md-block" style="float:right">
+        <label style="text-style:bold;text-color:black">Item Per Page</label>
+        <input type="number"   ng-model="perPage">
+        
+      </md-input-container>
+  </div>
+ </div> 
+   <div layout="row" layout-xs="column">
+    <div flex ng-show="editstate">
+      <md-input-container class="md-block">
+       <md-checkbox ng-model="activestatus" ng-change="changeActiveStatus(activestatus)" aria-label="Checkbox 1">
+           Show Inactive records also
+          </md-checkbox>
+      </md-input-container>
+  </div>
+   	<div flex>
+   		<md-button class="md-raised md-primary"  ng-disabled="state" ng-click="addState()" style="float:right">{{action_name}}</md-button>
+    </div>
+    <div flex ng-hide="editstate">
+      <md-button class="md-raised md-primary"  ng-click="cancelstate()" style="float:right">Cancel</md-button>
+    </div>
+   </div>
+  <div style="padding=2%"></div>
+  <!-- row start -->
+   <div layout="row" layout-xs="column" ng-show="editstate">
+   <div flex>
+       <table class="responstable">
+  <tr>
+    <th data-th="Country details" ng-click="sortCountry()">Country<md-icon class="material-icons"><i class="material-icons">{{CountrySortIcon}}</i></md-icon></th>
+      <th data-th="State details" ng-click="sortState()">State<md-icon class="material-icons"><i class="material-icons">{{StateSortIcon}}</i></md-icon></th>
+    <th colspan="4" style="text-align:center;">Action</th>
+  </tr>
+
+  <tr  dir-paginate="item in Statedata | orderBy:orderList | itemsPerPage: perPage" >
+    <td>{{item.mcountry}}</td>
+     <td>{{item.mstate}}</td>
+    
+    <td class="actionclass" ng-hide="item.status"><md-button class="actionbtn" ng-click="activeState(item)" aria-label="Info"><i class="fa fa-eye-slash"></i></md-button></td>
+   <td class="actionclass" ng-show="item.status"><md-button class="actionbtn" ng-click="activeState(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons"><i class="material-icons">remove_red_eye</i></i></md-icon></md-button></td>
+   <td class="actionclass"><md-button ng-click="editState(item)" class="actionbtn" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">mode_edit</i></md-icon></md-button></td>
+    <td class="actionclass"><md-button class="actionbtn" ng-click="removeState(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">delete_forever</i></md-icon></md-button></td>
+  </tr>
+    
+</table>
+<dir-pagination-controls template-url="angular/directives/dirPagination.tpl.html" style="float:right"></dir-pagination-controls>
+  </div> 
+</div>
+</form>
+ <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">

@@ -1,0 +1,90 @@
+
+<form name="masterForm" ng-controller="organizationCtrl as ctrl">
+	  <!-- ROW 1 start -->
+<div layout="row" layout-xs="column" ng-init="getOrganization()">
+ <div flex>
+  
+      <md-autocomplete
+           md-no-cache="true"
+           ng-disabled="dis_entity"
+          md-selected-item="ctrl.selectedEntity"
+          md-search-text-change="ctrl.searchEntityChange(ctrl.searchEntity)"
+          md-search-text="ctrl.searchEntity"
+          md-selected-item-change="ctrl.selectedEntityChange(item)"
+         md-items="item in ctrl.querySearchEntity(ctrl.searchEntity)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Entity">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchEntity" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No Entity matching "{{ctrl.searchEntity}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+</div>
+<div style="padding=2%"></div>
+   <div layout="row" layout-xs="column">
+  
+     <div flex>
+      <md-input-container class="md-block">
+        <label>Group</label>
+        <input  ng-model="mgroup">
+      
+      </md-input-container>
+    </div>
+   </div>
+   <div layout="row" layout-xs="column" ng-init="perPage=5" ng-show="editgroup">
+  <div flex>
+      <md-input-container class="md-block" style="float:right">
+        <label style="text-style:bold;text-color:black">Item Per Page</label>
+        <input type="number"   ng-model="perPage">
+        
+      </md-input-container>
+  </div>
+ </div> 
+   <div layout="row" layout-xs="column">
+    <div flex ng-show="editgroup">
+      <md-input-container class="md-block">
+       <md-checkbox ng-model="activestatus" ng-change="changeActiveStatus(activestatus)" aria-label="Checkbox 1">
+           Show Inactive records also
+          </md-checkbox>
+      </md-input-container>
+  </div>
+   	<div flex>
+   		<md-button class="md-raised md-primary"  ng-disabled="group" ng-click="addGroup()" style="float:right">{{action_name}}</md-button>
+    </div>
+    <div flex ng-hide="editgroup">
+      <md-button class="md-raised md-primary"  ng-click="cancelGroup()" style="float:right">Cancel</md-button>
+    </div>
+   </div>
+  <div style="padding=2%"></div>
+  <!-- row start -->
+   <div layout="row" layout-xs="column" ng-show="editgroup">
+   <div flex>
+       <table class="responstable">
+  <tr>
+    <th data-th="Entity details" ng-click="sortEntity()">Entity<md-icon class="material-icons"><i class="material-icons">{{EntitySortIcon}}</i></md-icon></th>
+      <th data-th="Group details" ng-click="sortGroup()">Group<md-icon class="material-icons"><i class="material-icons">{{GroupSortIcon}}</i></md-icon></th>
+    <th colspan="4" style="text-align:center;">Action</th>
+  </tr>
+
+  <tr  dir-paginate="item in Groupdata | orderBy:orderList | itemsPerPage: perPage" >
+    <td>{{item.mentity}}</td>
+     <td>{{item.mgroup}}</td>
+    
+    <td class="actionclass" ng-hide="item.status"><md-button class="actionbtn" ng-click="activeGroup(item)" aria-label="Info"><i class="fa fa-eye-slash"></i></md-button></td>
+   <td class="actionclass" ng-show="item.status"><md-button class="actionbtn" ng-click="activeGroup(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons"><i class="material-icons">remove_red_eye</i></i></md-icon></md-button></td>
+   <td class="actionclass"><md-button ng-click="editGroup(item)" class="actionbtn" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">mode_edit</i></md-icon></md-button></td>
+    <td class="actionclass"><md-button class="actionbtn" ng-click="removeGroup(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">delete_forever</i></md-icon></md-button></td>
+  </tr>
+    
+</table>
+<dir-pagination-controls template-url="angular/directives/dirPagination.tpl.html" style="float:right"></dir-pagination-controls>
+  </div> 
+</div>
+</form>
+ <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">

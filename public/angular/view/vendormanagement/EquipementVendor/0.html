@@ -1,0 +1,154 @@
+<h5 style="text-align:center;padding-bottom:10px;">Basic Info</h5>
+<form name="carrymodelForm" ng-controller="vendorCtrl as ctrl">
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column" ng-init="getLocation()">
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Vendor Company</label>
+        <input required name="vendor_company" ng-model="carrymodel.Vendor_Company" style="text-transform: capitalize;">
+        <div ng-messages="carrymodelForm.vendor_company.$error">
+          <div ng-message="required">Vendor Company is required.</div>
+        </div>
+      </md-input-container>
+  </div>
+  <div flex>
+     <md-input-container class="md-block">
+        <label>Address 1</label>
+    <input required name="address_1" ng-model="carrymodel.Address_1" style="text-transform: capitalize;">
+        <div ng-messages="carrymodelForm.address_1.$error">
+          <div ng-message="required">Address is required.</div>
+        </div>
+      </md-input-container>
+  </div>
+</div>
+<!-- ROW 1 Ends -->
+<!-- ROW 2 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Address 2</label>
+      <input required name="address_2" ng-model="carrymodel.Address_2"style="text-transform: capitalize;">
+        <div ng-messages="carrymodelForm.address_2.$error">
+          <div ng-message="required">Address is required.</div>
+        </div>
+      </md-input-container>
+  </div>
+
+   <div flex>
+      <md-input-container class="md-block">
+        <label>Land Mark</label>
+        <input required name="landmark" ng-model="carrymodel.Landmark"style="text-transform: capitalize;">
+      </md-input-container>
+  </div>
+</div>
+<!-- Row 2 Ends -->
+
+<!-- ROW 3 Starts -->
+<div layout="row" layout-xs="column">
+ <div flex>
+  <!-- md-floating-label="Country"  -->
+      <md-autocomplete
+          ng-disabled="ctrl.isDisabled"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedCountry"
+          md-search-text-change="ctrl.searchCountryChange(ctrl.searchCountry)"
+          md-search-text="ctrl.searchCountry"
+          md-selected-item-change="ctrl.selectedCountryChange(item)"
+          md-items="item in ctrl.querySearchCountry(ctrl.searchCountry)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Country">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchCountry" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No Country matching "{{ctrl.searchCountry}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <div style="width:2%"></div>
+  
+  <div flex>
+      <md-autocomplete
+          ng-disabled="ctrl.isDisabled"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedState"
+          md-search-text-change="ctrl.searchStateChange(ctrl.searchState)"
+          md-search-text="ctrl.searchState"
+          md-selected-item-change="ctrl.selectedStateChange(item)"
+          md-items="item in ctrl.querySearchState(ctrl.searchState)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="State">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchState" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No State matching "{{ctrl.searchState}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <div style="width:2%"></div>
+  <div flex>
+      <md-autocomplete
+          ng-disabled="ctrl.isDisabled"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedCity"
+          md-search-text-change="ctrl.searchCityChange(ctrl.searchCity)"
+          md-search-text="ctrl.searchCity"
+          md-selected-item-change="ctrl.selectedCityChange(item)"
+          md-items="item in ctrl.querySearchCity(ctrl.searchCity)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="City">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchCity" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No City matching "{{ctrl.searchCity}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+</div>
+<!-- ROW 3 Ends -->
+<div style="padding-bottom:2%"></div>
+<!-- Row 4 start -->
+<div class="row" layout-xs="column">
+<div style="padding-bottom:2%"></div>
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Pin Code</label>
+        <input required name="pincode" ng-model="carrymodel.Pincode"
+        style="text-transform: capitalize;">
+        <div ng-messages="carrymodelForm.pincode.$error">
+          <div ng-message="required">Pin Code is required.</div>
+        </div>
+      </md-input-container>
+  </div>
+
+  <div flex>
+    <label>Empanelment Date</label>
+    <md-datepicker  ng-model="Empanelment_Date" md-placeholder="Enter date" ng-change="date()" required name="empanelment_date"> 
+    <div ng-messages="carrymodelForm.empanelment_date.$error">
+          <div ng-message="required">Empanelment Date is required.</div>
+    </div>
+  </md-datepicker>
+    
+  </div>
+</div>
+<!-- Row 4 send -->
+ 
+  <div style="padding-bottom:2%"></div>
+  <!-- ROW last Starts -->
+<div class="row">
+        
+          <!-- <md-button ng-click="prevaction(addcourse)" type="button" class="md-raised md-primary">Previous</md-button> -->
+        
+           <md-button ng-disabled="!carrymodelForm.$valid"  ng-click="nextaction(carrymodel)" type="button" class="md-raised md-primary" style="float:right;">{{nextName}}</md-button>
+        
+</div>
+<!-- ROW last Ends -->
+</form>
+
+ 
+

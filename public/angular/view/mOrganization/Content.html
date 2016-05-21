@@ -1,0 +1,55 @@
+<form name="masterForm" ng-controller="organizationCtrl as ctrl">
+
+<div layout="row" layout-xs="column" >
+   <div flex>
+      
+  </div>
+
+    <div flex>
+          <md-input-container class="md-block">
+          <label>Choose Master Types</label>
+       <md-select ng-model="masterType"  aria-label="Type" >
+          <md-option ng-repeat="master in masters" value="{{master}}">
+            {{master}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+     <div flex>
+          <md-input-container class="md-block">
+       <md-button ng-disabled="!masterType" ng-click="addMasterdata(masterType)" style="float:right;" class="md-raised md-primary" aria-label="Info"><md-icon class="material-icons">add</md-icon></md-button>
+      </md-input-container>
+    </div>
+    
+</div>
+ <!-- <div class="rowx" ng-include="'angular/views/mOrganization/MasterPages/mDepartment.html'"></div> -->
+<!-- <div layout="row" layout-xs="column">
+   <div flex>
+       <table class="responstable">
+  <tr>
+    <th data-th="Course details" ng-click="sortvendor()">Vendor Company<md-icon class="material-icons"><i class="material-icons">{{vendorSortIcon}}</i></md-icon></th>
+    <th ng-click="sorttype()">Type<md-icon class="material-icons"><i class="material-icons">{{typeSortIcon}}</i></md-icon></th>
+    
+    <th colspan="4" style="text-align:center;">Action</th>
+  </tr>
+
+  <tr ng-repeat="item in getVendorList | orderBy:orderList">
+    <td>{{item.Vendor_Company}}</td>
+     <td>{{item.vendortype}}</td>
+    
+    <td class="actionclass" ng-hide="item.vendorstatus"><md-button class="actionbtn" ng-click="activeVendor(item)" aria-label="Info"><i class="fa fa-eye-slash"></i></md-button></td>
+   <td class="actionclass" ng-show="item.vendorstatus"><md-button class="actionbtn" ng-click="activeVendor(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons"><i class="material-icons">remove_red_eye</i></i></md-icon></md-button></td>
+   <td class="actionclass"><md-button ng-click="editVendor(item)" class="actionbtn" ng-click="" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">mode_edit</i></md-icon></md-button></td>
+    <td class="actionclass"><md-button class="actionbtn" ng-click="removeVendor(item)" aria-label="Info"><md-icon class="material-icons"><i class="material-icons">delete_forever</i></md-icon></md-button></td>
+  </tr>
+  
+  
+</table>
+  </div> 
+</div> -->
+<!-- ROW 1 Ends -->
+</form>
+
+ <link href="assets/css/course.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">

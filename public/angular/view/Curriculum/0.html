@@ -1,0 +1,71 @@
+<h5 style="text-align:center;padding-bottom:10px;">Basic Info</h5>
+<form name="carrymodelForm" ng-controller="curriculumCtrl">
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Curriculum Name</label>
+        <input required name="curriculum" ng-model="carrymodel.curriculum_name">
+        <div ng-messages="carrymodelForm.curriculum.$error">
+          <div ng-message="required">Curriculum Name is Required.</div>
+        </div>
+      </md-input-container>
+  </div>
+</div>
+<!-- ROW 1 Ends -->
+<!-- ROW 2 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Curriculum Description</label>
+      <textarea ng-model="carrymodelForm.curriculum_description"  rows="" md-select-on-focus=""></textarea>
+         <div ng-messages="carrymodelForm.curriculum_description.$error">
+   <div ng-message="required">Curriculum Description is Required.</div>
+           
+        </div>
+      </md-input-container>
+  </div>
+</div>
+<!-- ROW 2 Ends -->
+
+  <div style="padding-bottom:2%"></div>
+  <!-- ROW 3 Starts -->
+<div class="row">
+
+<choose-file layout="row">
+    <input id="fileInput" ng-disabled="kok" type="file" class="ng-hide" aria-label="fileInput">
+    <md-input-container flex class="md-block">
+      <input type="text" ng-model="carrymodel.imgname" placeholder="Course Image"disabled aria-label="files">
+    </md-input-container>
+    <div>
+      <md-button ng-click="browseClick()" id="browsebtn" class="md-fab md-mini">
+        <md-icon class="material-icons">attach_file</md-icon>
+      </md-button>
+    </div>
+    <div>
+      &nbsp;
+    </div>
+    <div>
+      <md-button ng-click="uploadClick()" ng-disabled="!carrymodel.imgname" id="uploadbtn" class="md-fab md-mini">
+        <md-icon class="material-icons">file_upload</md-icon>
+      </md-button>
+    </div>    
+  </choose-file>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</div>
+  <!-- ROW 3 Ends -->
+  
+  <!-- ROW last Starts -->
+<div class="row">
+        
+          <!-- <md-button ng-click="prevaction(addcourse)" type="button" class="md-raised md-primary">Previous</md-button> -->
+          <!-- ng-disabled="!carrymodelForm.$valid" -->
+           <md-button   ng-click="nextaction(carrymodel)" type="button" class="md-raised md-primary" style="float:right;">{{nextName}}</md-button>
+        
+</div>
+<!-- ROW last Ends -->
+</form>
+
+ 
+

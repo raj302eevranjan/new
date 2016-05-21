@@ -1,0 +1,300 @@
+<div ng-cloak>  
+<md-content style="padding:2%">   
+        <form name="carrymodelForm" ng-controller="ILController as ctrl" ng-init="compInit()">
+
+<!-- ROW 1 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Title</label>
+        <input required name="title" ng-model="carrymodel.title" ng-change="checkValid()">
+        <div ng-messages="carrymodelForm.title.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+  </div>
+  <div flex>
+      <md-input-container class="md-block">
+        <label>Description</label>
+        <input md-maxlength="256" required md-no-asterisk name="description" ng-model="carrymodel.description" ng-change="checkValid()">
+        <div ng-messages="carrymodelForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 256 characters long.</div>
+        </div>
+      </md-input-container>
+  </div>
+</div>
+<!-- ROW 1 Ends -->
+
+<!-- ROW 2 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+      <md-autocomplete
+          ng-disabled="false"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedCompetency"
+          md-search-text-change="ctrl.searchCompetencyChange(ctrl.searchCompetency)"
+          md-search-text="ctrl.searchCompetency"
+          md-selected-item-change="ctrl.selectedCompetencyChange(item)"
+          md-items="item in ctrl.querySearchCompetency(ctrl.searchCompetency)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Competency">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchCompetency" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No Competency matching "{{ctrl.searchCompetency}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+  <div style="width:2%"></div>
+  <div flex>
+  <md-autocomplete
+          ng-disabled="!ctrl.selectedCompetency"
+          md-no-cache="true"
+          md-selected-item="ctrl.selectedSubcompetency"
+          md-search-text-change="ctrl.searchSubcompetencyChange(ctrl.searchSubcompetency)"
+          md-search-text="ctrl.searchSubcompetency"
+          md-selected-item-change="ctrl.selectedSubcompetencyChange(item)"
+          md-items="item in ctrl.querySearchSubcompetency(ctrl.searchSubcompetency)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Sub Competency">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchSubcompetency" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No SubCompetency matching "{{ctrl.searchSubcompetency}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+  </div>
+</div>
+<!-- ROW 2 Ends -->
+<div style="padding-bottom:2%"></div>
+<!-- ROW 3 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex>
+       <md-contact-chips 
+       ng-hide="!ctrl.selectedSubcompetency" 
+        ng-model="ctrl.asyncContacts"
+        md-contacts="ctrl.delayedQuerySearch($query)"
+        md-contact-name="name"
+        md-require-match="true"
+        md-highlight-flags="i"
+        filter-selected="ctrl.filterSelected"
+        placeholder="Skills">
+    </md-contact-chips>
+  </div>
+  
+</div>
+<!-- ROW 3 Ends -->
+<div style="padding-bottom:2%"></div>
+<!-- ROW 4 Starts -->
+<div layout="row" layout-xs="column">
+  <div flex >
+       <md-chips
+        ng-model="carrymodel.tags"
+        readonly="ctrl.readonly"
+        placeholder="Enter a tag"
+        delete-button-label="Remove Tag"
+        delete-hint="Press delete to remove tag"
+        secondary-placeholder="+Tag"
+        ></md-chips>
+  </div>
+  <div flex>
+          <md-input-container class="md-block">
+          <label>Choose Upload Type</label>
+       <md-select ng-model="carrymodel.uploadType" ng-change="changeType()"  aria-label="Type">
+          <md-option ng-repeat="type in types" value="{{type}}">
+            {{type}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+  
+</div>
+<!-- ROW 4 Ends -->
+<div style="padding-bottom:2%"></div>
+<!-- ROW 5 Starts -->
+<div layout="row" layout-xs="column" ng-show="carrymodel.uploadType">
+<div flex>
+    <md-radio-group ng-model="carrymodel.urltype" ng-change="radioChange()">
+      <md-radio-button value="Online" class="md-primary">Online</md-radio-button>
+      <md-radio-button value="Local" > Local </md-radio-button>
+    </md-radio-group>
+  </div>
+  <div flex>
+   <md-input-container class="md-block" ng-hide="carrymodel.radioStatus">
+        <label>URL</label>
+        <input type="url" Placeholder="http://" name="onlineurl" ng-model="carrymodel.onlineurl" http-prefix ng-change="checkValid()">
+      </md-input-container>
+  <choose-file layout="row" ng-hide="!carrymodel.radioStatus">
+    <input id="fileInput" ng-disabled="kok" type="file" class="ng-hide" aria-label="fileInput">
+    <md-input-container flex class="md-block">
+      <input type="text" ng-model="carrymodel.localurl" disabled aria-label="files">
+    </md-input-container>
+    
+    <div>
+      <md-button ng-click="browseClick()" id="browsebtn" class="md-fab md-mini">
+        
+    </div>
+    <div>
+      &nbsp;
+    </div>
+    
+  </choose-file>
+</div>
+</div>
+<!-- ROW 5 Ends -->
+
+<!-- ROW 6 Starts -->
+
+
+<!--Preview video starts -->
+
+<div layout="row" layout-xs="column">
+<div flex style="text-align:center" ng-show="showVideo">
+  <iframe class="youtube-player" type="text/html" width="640" height="385" ng-src="{{trustSrc(movie.src)}}" allowfullscreen frameborder="0">
+  </iframe>
+</div>
+</div>
+
+
+<!-- Preview video ends -->
+
+<div style="padding-bottom:2%"></div>
+
+<div layout="row" layout-xs="column">
+<div flex>
+ <md-checkbox ng-model="carrymodel.intellect" aria-label="Checkbox 1" ng-change="checkValid()">
+            I hereby confirm that I am aware of Intellectual property guidelines of the organization and ensuring that I am not posting any pirated content.
+          </md-checkbox>
+   
+</div>
+</div>
+
+<!-- Row 6 Ends -->
+<!-- ROW 7 Starts -->
+<div layout="row" layout-xs="column">
+<div flex style="text-align:center">
+  <md-button ng-click="uploadClick()" ng-disabled="!validcheck" id="uploadbtn" class="md-raised md-primary" >
+        Upload
+      </md-button>
+   
+</div>
+</div>
+
+<!-- Row 7 Ends -->
+<div layout="row" layout-xs="column">
+<div flex style="text-align:center" ng-show="showProgress">
+  <progress value="{{progressValue}}" max="100" ></progress>
+   <div style="color:green;padding-left:1%;font-weight:bold;">{{progressValue}}%</div>
+</div>
+</div>
+
+
+ 
+   
+</md-content>  
+</div>
+
+<style type="text/css">
+progress[value] {
+  width: 250px;
+  height: 20px;
+}
+@-webkit-keyframes animate-stripes {
+   100% { background-position: -100px 0px; }
+}
+
+@keyframes animate-stripes {
+   100% { background-position: -100px 0px; }
+}
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  
+  /* Get rid of default border in Firefox. */
+  border: none;
+  
+  /* Dimensions */
+  width: 250px;
+  height: 20px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+progress[value]::-webkit-progress-value {
+  background-image:
+     -webkit-linear-gradient(-45deg, 
+                             transparent 33%, rgba(0, 0, 0, .1) 33%, 
+                             rgba(0,0, 0, .1) 66%, transparent 66%),
+     -webkit-linear-gradient(top, 
+                             rgba(255, 255, 255, .25), 
+                             rgba(0, 0, 0, .25)),
+     -webkit-linear-gradient(left, #09c, #f44);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+.progress-bar {
+  background-color: whiteSmoke;
+  border-radius: 2px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25) inset;
+
+  width: 250px;
+  height: 20px;
+  
+  position: relative;
+  display: block;
+}
+  
+.progress-bar > span {
+  background-color: blue;
+  border-radius: 2px;
+
+  display: block;
+  text-indent: -9999px;
+}
+-webkit-animation: animate-stripes 5s linear infinite;
+        animation: animate-stripes 5s linear infinite;
+
+'
+progress[value]::-webkit-progress-value::before {
+  content: '80%';
+  position: absolute;
+  right: 0;
+  top: -125%;
+}
+
+progress[value]::-moz-progress-bar { 
+  background-image:
+    -moz-linear-gradient(
+   
+      135deg, 
+      transparent 33%, 
+      rgba(0, 0, 0, 0.1) 33%, 
+      rgba(0, 0, 0, 0.1) 66%, 
+      transparent 66% 
+    ),
+    -moz-linear-gradient(
+      top, 
+      rgba(255, 255, 255, 0.25), 
+      rgba(0, 0, 0, 0.25)
+    ),
+    -moz-linear-gradient(
+      left, 
+      #09c, 
+      #f44
+    );
+
+  border-radius: 2px; 
+  background-size: 35px 20px, 100% 100%, 100% 100%; 
+}
+</style>
